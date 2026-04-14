@@ -4,6 +4,7 @@ const optionsWrapper = document.getElementById("options-wrapper");
 const body = document.body;
 const eye = document.getElementById("eyeSvg");
 
+
 window.addEventListener("message", (event) => {
   optionsWrapper.innerHTML = "";
 
@@ -38,3 +39,4 @@ window.addEventListener("message", (event) => {
     }
   }
 });
+

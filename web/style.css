@@ -17,12 +17,12 @@ body {
 p {
   margin: 0;
 }
-
+/*
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 40;
-}
+}*/
 
-#eye {
+ #eye {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -31,61 +31,167 @@ p {
   fill: black;
 }
 
+
+.first-o
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  border: 2px solid rgba(0,0,0,0);
+  transition: 0.2s;
+}
+
+.second-o
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background-color: transparent;
+  border-radius: 100%;
+  border: 1px solid #67CBC1;
+  box-shadow: 0px 0px 15px 2px #67CBC1;
+  
+}
+
 .eye-hover {
-  fill: var(--color-default);
+  border: 2px solid #67CBC1;
+  box-shadow: 0px 0px 15px 2px #67CBC1;
+  transition: 0.5s;
+}
+
+
+.first-o-hober
+{
+  border: 1px solid red;
 }
 
 #options-wrapper {
   position: absolute;
-  top: calc(48.4%);
-  left: calc(50% + 18pt);
+  top: calc(44.9%);
+  left: calc(50% + 40pt);
+  transform: perspective(400px) rotate3d(1, -1, 0, 13deg);
 }
 
+
 .option-container {
-  color: var(--color-default);
+  color: rgba(255,255,255,0.5);
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   font-family: "Nunito";
-  background: linear-gradient(
-    90deg,
-    rgba(20, 20, 20, 0.7) 0%,
-    rgba(20, 20, 20, 0.6) 66%,
-    rgba(47, 48, 53, 0) 100%
-  );
+  background-color: rgba(175, 175, 175, 0.096);
   font-size: 11pt;
   line-height: 22pt;
   vertical-align: middle;
-  margin: 2pt;
+  margin: 10pt;
   transition: 300ms;
   transform-origin: left top;
   scale: 1;
-  height: 22pt;
-  width: 150pt;
+  height: 32pt;
+  width:max-content;
+  border-radius: 0px 10px 0px 10px;
   top: 0;
+  border: 1px solid rgba(255, 255, 255, 0.295);
+  justify-content: center;
+  transition: 0.5s;
+  animation: fadeInLeft;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
 }
 
 .option-container:hover {
-  background: linear-gradient(
-    90deg,
-    rgba(30, 30, 30, 0.7) 0%,
-    rgba(30, 30, 30, 0.6) 66%,
-    rgba(57, 58, 63, 0) 100%
-  );
+  transform: scale(1.1);
+  transition: 0.5s;
   transform-origin: left top;
   color: var(--color-hover);
   margin-left: 4pt;
+  border-style: solid;
+  border-width: 2px;
+  background-color: #2C5451;
+  border: 1px solid  rgba(58, 212, 197, 1);
+  box-shadow: 0px 0px 15px 5px #67CBC1;
 }
 
+
 .option-icon {
+  position: relative;
   font-size: 12pt;
   line-height: 22pt;
   width: 14pt;
-  margin: 5pt;
+  float: right;
+  margin-left: 10pt;
+  margin-right: 15pt;
   color: var(--color-default);
 }
 
 .option-label {
-  font-weight: 500;
+  margin-left: 30px;
+  font-weight: 100;
+  font-size: 18px;
+  font-family: sora;
 }
+
+@keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .cursor-wrapper {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.following-arc {
+    position: absolute;
+    width: 80px; /* Średnica orbity */
+    height: 80px;
+    border: 4px solid transparent;
+    border-right: 4px solid #67CBC1; /* To tworzy ten łuk */
+    border-radius: 50%;
+    box-shadow: 5px solid #67CBC1;
+    filter: drop-shadow(0 0 8px #67CBC1);
+    pointer-events: none;
+    transition: transform 0.1s ease-out; /* Płynność ruchu */
+}
+
+.following-arc {
+    position: absolute;
+    /* Centrowanie ręczne zamiast transform */
+    top: calc(50% - 40px); 
+    left: calc(50% - 40px);
+    width: 80px;
+    height: 80px;
+    border: 4px solid transparent;
+    border-right: 4px solid #67CBC1;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: transform 0.1s ease-out, opacity 0.3s ease-in-out;
+    /* Ważne: usuń stąd wszelkie 'transform' */
+}
+
+.visible {
+    opacity: 1 !important;
+}
+
