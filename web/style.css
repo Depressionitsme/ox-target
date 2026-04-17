@@ -75,68 +75,129 @@ p {
 
 #options-wrapper {
   position: absolute;
-  top: calc(44.9%);
+  top: calc(45% + 10pt);
   left: calc(50% + 40pt);
-  transform: perspective(400px) rotate3d(1, -1, 0, 13deg);
+  transform: perspective(400px) rotate3d(1, -1, 0, 5deg);
+  max-height: 250px; 
+  overflow-y: hidden;
+  padding: 20px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  mask-image: linear-gradient(to bottom, 
+    transparent 0%, 
+    black 15%, 
+    black 85%, 
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(to bottom, 
+    transparent 0%, 
+    black 15%, 
+    black 85%, 
+    transparent 100%
+  );
+  scroll-behavior: auto !important;
 }
 
 
 .option-container {
-  color: rgba(255,255,255,0.5);
+  color: rgb(221, 221, 221);
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   font-family: "Nunito";
-  background-color: rgba(175, 175, 175, 0.096);
-  font-size: 11pt;
+  background-color: rgba(27, 27, 27, 0.3);
+  font-size: 1.1rem;
   line-height: 22pt;
   vertical-align: middle;
-  margin: 10pt;
-  transition: 300ms;
+  margin: 8px 0;
   transform-origin: left top;
   scale: 1;
   height: 32pt;
   width:max-content;
   border-radius: 0px 10px 0px 10px;
   top: 0;
-  border: 1px solid rgba(255, 255, 255, 0.295);
+  border: 1px solid #14141462;
   justify-content: center;
-  transition: 0.5s;
+  transition: all 0.6s ease;
   animation: fadeInLeft;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+  overflow: hidden;
+  padding-right: 25px;
+}
+
+.option-container::before
+{
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -100%;
+  width: 10%;
+  height: 100px;
+  background-color: #ffffff34;
+  z-index: -1;
+  /* box-shadow: 0 0 50px #67CBC1, 0 0 90px #67CBC1 inset; */
+  transition: left 0.6s ease;
+  transform: rotate(20deg);
 }
 
 .option-container:hover {
   transform: scale(1.1);
   transition: 0.5s;
   transform-origin: left top;
-  color: var(--color-hover);
   margin-left: 4pt;
   border-style: solid;
   border-width: 2px;
-  background-color: #2C5451;
-  border: 1px solid  rgba(58, 212, 197, 1);
-  box-shadow: 0px 0px 15px 5px #67CBC1;
+  font-weight: 400;
+  border: 1px solid #67CBC1;
+  border-radius: 10px;
+  background-color: rgba(27, 27, 27, 0.8);
+}
+
+.option-container:hover .icon-box
+{
+  transform: rotate(45deg);
+  transition: 0.3s;
+}
+
+.option-container:hover .option-icon
+{
+  transform: rotate(-45deg);
+  transition: 0.3s;
+}
+
+.icon-box
+{
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 20px;
+  height: 20px;
+  background-color: #27A299;
+  border-radius: 5px;
+  padding: 3px;
+  transition: 0.3s;
+}
+
+.option-container:hover::before
+{
+  left: 100%;
 }
 
 
 .option-icon {
-  position: relative;
   font-size: 12pt;
-  line-height: 22pt;
-  width: 14pt;
-  float: right;
-  margin-left: 10pt;
-  margin-right: 15pt;
-  color: var(--color-default);
+  float: left;
+  transition: .3s;
+  filter: drop-shadow(0 0 .1rem rgb(0, 0, 0, .75));
 }
 
 .option-label {
-  margin-left: 30px;
-  font-weight: 100;
-  font-size: 18px;
+  margin-left: 20px;
+  font-weight: 200;
   font-family: sora;
 }
 

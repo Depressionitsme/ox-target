@@ -31,3 +31,26 @@ document.addEventListener('mousemove', (e) => {
         arc.style.transform = `translate(${moveX}px, ${moveY}px) rotate(${rotationDeg}deg)`;
     });
 });
+
+let currentScroll = 0;
+const scrollSpeed = 0.95; 
+
+window.addEventListener('wheel', (event) => {
+    const wrapper = document.getElementById("options-wrapper");
+    if (!wrapper) return;
+
+    
+    currentScroll += event.deltaY * scrollSpeed;
+
+    
+    const maxScroll = wrapper.scrollHeight - wrapper.clientHeight;
+    currentScroll = Math.max(0, Math.min(currentScroll, maxScroll));
+
+    // Animacja GSAP
+    gsap.to(wrapper, {
+        scrollTop: currentScroll,
+        duration: 0.55,      
+        ease: "power2.out", 
+        overwrite: true     
+    });
+}, { passive: true });
